@@ -7,7 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\TaxCalculator.Domain\TaxCalculator.Domain.csproj"/>
+        <ProjectReference Include="..\TaxCalculator.Domain\TaxCalculator.Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MediatR" Version="11.1.0" />
+      <PackageReference Include="MediatR.Contracts" Version="1.0.1" />
     </ItemGroup>
 
 </Project>

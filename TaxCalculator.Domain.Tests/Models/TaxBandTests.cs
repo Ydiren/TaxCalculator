@@ -1,7 +1,7 @@
 using FluentAssertions;
 using TaxCalculator.Domain.Models;
 
-namespace TaxCalculator.Domain.Tests;
+namespace TaxCalculator.Domain.Tests.Models;
 
 public class TaxBandTests
 {
