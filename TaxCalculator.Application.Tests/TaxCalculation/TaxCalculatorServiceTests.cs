@@ -112,7 +112,6 @@ public class TaxCalculatorServiceTests
         actualResult.Should()
                     .BeEquivalentTo(expectedResult);
     }
-    
     [Test]
     public async Task CalculateTax_WhenThreeUnevenlyDistributedTaxBandsExists_CalculatesExpectedTaxValues()
     {
