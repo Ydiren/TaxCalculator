@@ -1,35 +1,40 @@
 <h1 id="tableLabel">Tax Calculator</h1>
 
-<p *ngIf="!calculationResult && salary"><em>Loading...</em></p>
+<p *ngIf="fetchingData"><em>Loading...</em></p>
 <div>
-  <input placeholder="Salary" type="number" [(ngModel)]="salary" class="me-3"/><button class="btn btn-primary me-3" (click)="calculateTax()" [disabled]="!salary">Calculate</button>
+  <label for="salaryInput" class="me-3">Gross Annual Salary: </label>
+  <input id="salaryInput" placeholder="Salary" type="number" [(ngModel)]="salary" class="me-3"/>
+  <button class="btn btn-primary me-3" (click)="calculateTax()" [disabled]="!salary">Calculate</button>
 </div>
 
-<table *ngIf="calculationResult" aria-labelledby="tableLabel" class='table table-striped'>
-  <tbody>
-  <tr>
-    <td>Gross Annual Salary</td>
-    <td>£{{ calculationResult.grossAnnualSalary | number: '1.2-2' }}</td>
-  </tr>
-  <tr>
-    <td>Gross Monthly Salary</td>
-    <td>£{{ calculationResult.grossMonthlySalary | number: '1.2-2' }}</td>
-  </tr>
-  <tr>
-    <td>Net Annual Salary</td>
-    <td>£{{ calculationResult.netAnnualSalary | number: '1.2-2' }}</td>
-  </tr>
-  <tr>
-    <td>Net Monthly Salary</td>
-    <td>£{{ calculationResult.netMonthlySalary | number: '1.2-2' }}</td>
-  </tr>
-  <tr>
-    <td>Annual Tax Paid</td>
-    <td>£{{ calculationResult.annualTax | number: '1.2-2' }}</td>
-  </tr>
-  <tr>
-    <td>Monthly Tax Paid</td>
-    <td>£{{ calculationResult.monthlyTax | number: '1.2-2' }}</td>
-  </tr>
-  </tbody>
-</table>
+<div *ngIf="calculationResult">
+  <hr/>
+  <table  aria-labelledby="tableLabel" class='table table-striped'>
+    <tbody>
+    <tr>
+      <td>Gross Annual Salary</td>
+      <td>£{{ calculationResult.grossAnnualSalary | number: '1.2-2' }}</td>
+    </tr>
+    <tr>
+      <td>Gross Monthly Salary</td>
+      <td>£{{ calculationResult.grossMonthlySalary | number: '1.2-2' }}</td>
+    </tr>
+    <tr>
+      <td>Net Annual Salary</td>
+      <td>£{{ calculationResult.netAnnualSalary | number: '1.2-2' }}</td>
+    </tr>
+    <tr>
+      <td>Net Monthly Salary</td>
+      <td>£{{ calculationResult.netMonthlySalary | number: '1.2-2' }}</td>
+    </tr>
+    <tr>
+      <td>Annual Tax Paid</td>
+      <td>£{{ calculationResult.annualTax | number: '1.2-2' }}</td>
+    </tr>
+    <tr>
+      <td>Monthly Tax Paid</td>
+      <td>£{{ calculationResult.monthlyTax | number: '1.2-2' }}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
