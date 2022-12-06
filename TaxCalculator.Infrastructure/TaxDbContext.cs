@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using TaxCalculator.Domain.Models;
 using TaxCalculator.Infrastructure.Entities;
 
 namespace TaxCalculator.Infrastructure;

@@ -1,6 +1,5 @@
 import {Component, Inject, Input, Output} from '@angular/core';
 import {TaxCalculatorService} from "../Services/tax-calculator.service";
-import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-fetch-data',
@@ -18,11 +17,9 @@ export class FetchDataComponent {
     this.fetchingData = true;
     this.taxCalculatorService.calculateTax(Number(this.salary))
       .subscribe(
-        result => {
-          this.calculationResult = result
-          this.fetchingData = false;
-        },
-        error => console.error(error));
+        result => this.calculationResult = result,
+        error => console.error(error),
+        () => this.fetchingData = false);
   }
 }
 
