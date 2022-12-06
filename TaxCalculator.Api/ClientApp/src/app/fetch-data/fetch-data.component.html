@@ -1,24 +1,35 @@
-<h1 id="tableLabel">Weather forecast</h1>
+<h1 id="tableLabel">Tax Calculator</h1>
 
-<p>This component demonstrates fetching data from the server.</p>
+<p *ngIf="!calculationResult"><em>Loading...</em></p>
+<div>
+  <input placeholder="Salary" type="number" [(ngModel)]="salary" /><button (click)="calculateTax()">Calculate</button>
+</div>
 
-<p *ngIf="!forecasts"><em>Loading...</em></p>
-
-<table *ngIf="forecasts" aria-labelledby="tableLabel" class='table table-striped'>
-  <thead>
-  <tr>
-    <th>Date</th>
-    <th>Temp. (C)</th>
-    <th>Temp. (F)</th>
-    <th>Summary</th>
-  </tr>
-  </thead>
+<table *ngIf="calculationResult" aria-labelledby="tableLabel" class='table table-striped'>
   <tbody>
-  <tr *ngFor="let forecast of forecasts">
-    <td>{{ forecast.date }}</td>
-    <td>{{ forecast.temperatureC }}</td>
-    <td>{{ forecast.temperatureF }}</td>
-    <td>{{ forecast.summary }}</td>
+  <tr>
+    <td>Gross Annual Salary</td>
+    <td>£{{ calculationResult.grossAnnualSalary | number: '1.2-2' }}</td>
+  </tr>
+  <tr>
+    <td>Gross Monthly Salary</td>
+    <td>£{{ calculationResult.grossMonthlySalary | number: '1.2-2' }}</td>
+  </tr>
+  <tr>
+    <td>Net Annual Salary</td>
+    <td>£{{ calculationResult.netAnnualSalary | number: '1.2-2' }}</td>
+  </tr>
+  <tr>
+    <td>Net Monthly Salary</td>
+    <td>£{{ calculationResult.netMonthlySalary | number: '1.2-2' }}</td>
+  </tr>
+  <tr>
+    <td>Annual Tax Paid</td>
+    <td>£{{ calculationResult.annualTax | number: '1.2-2' }}</td>
+  </tr>
+  <tr>
+    <td>Monthly Tax Paid</td>
+    <td>£{{ calculationResult.monthlyTax | number: '1.2-2' }}</td>
   </tr>
   </tbody>
 </table>

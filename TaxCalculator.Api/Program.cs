@@ -9,6 +9,10 @@ using TaxCalculator.Infrastructure;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddCors(options => options.AddDefaultPolicy(policy =>
+{
+    policy.AllowAnyOrigin();
+}));
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<ITaxCalculatorService, TaxCalculatorService>();
 builder.Services.AddScoped<ITaxBandRepository, TaxBandRepository>();
@@ -33,6 +37,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 
+app.UseCors();
 
 app.MapControllerRoute("default",
                        "{controller}/{action=Index}/{id?}");

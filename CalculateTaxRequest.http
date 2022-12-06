@@ -1,0 +1,1 @@
+GET https://localhost:7072/TaxCalculator/calculatetax?salary=40000

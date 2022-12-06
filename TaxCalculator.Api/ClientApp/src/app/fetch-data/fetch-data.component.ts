@@ -1,23 +1,30 @@
-import {Component, Inject} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {Component, Inject, Input} from '@angular/core';
+import {TaxCalculatorService} from "../Services/tax-calculator.service";
 
 @Component({
   selector: 'app-fetch-data',
   templateUrl: './fetch-data.component.html'
 })
 export class FetchDataComponent {
-  public forecasts: WeatherForecast[] = [];
+  public calculationResult?: CalculateTaxResult | null;
+  @Input() salary!: number | string;
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<WeatherForecast[]>(baseUrl + 'weatherforecast').subscribe(result => {
-      this.forecasts = result;
-    }, error => console.error(error));
+  constructor(private taxCalculatorService: TaxCalculatorService) { }
+
+  calculateTax() {
+    this.calculationResult = null;
+    this.taxCalculatorService.calculateTax(Number(this.salary))
+      .subscribe(
+        result => this.calculationResult = result,
+          error => console.error(error));
   }
 }
 
-interface WeatherForecast {
-  date: string;
-  temperatureC: number;
-  temperatureF: number;
-  summary: string;
+export interface CalculateTaxResult {
+  grossAnnualSalary: number;
+  grossMonthlySalary: number;
+  netAnnualSalary: number;
+  netMonthlySalary: number;
+  annualTax: number;
+  monthlyTax: number;
 }
