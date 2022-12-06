@@ -28,6 +28,9 @@ public class TaxBandTests
     [TestCase(5000, 10000, 40, 20000, "2000")]
     [TestCase(15000, 20000, 20, 10000, "0")]
     [TestCase(15000, 20000, 0, 50000, "0")]
+    [TestCase(5000, 10000, 20, 4999, "0")]
+    [TestCase(5000, 10000, 20, 5000, "0")]
+    [TestCase(5000, 10000, 20, 5001, "0.2")]
     public void CalculateTax_WhenLimitsRateAndSalaryAreGiven_ReturnsExpectedValue(int lowerLimit, int upperLimit, int rate, int salary, decimal expectedResult)
     {
         var sut = new TaxBand

@@ -32,9 +32,9 @@ public class TaxBand
 
     private int AdjustTaxableAmountForLowerLimit(int salary, int taxableAmount)
     {
-        return salary > LowerLimit
-                   ? taxableAmount - LowerLimit
-                   : taxableAmount;
+        return salary < LowerLimit
+                   ? taxableAmount
+                   : taxableAmount - LowerLimit;
     }
 
     private int AdjustTaxableAmountForUpperLimit(int salary)
