@@ -3,7 +3,7 @@
     class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3"
   >
     <div class="container">
-      <a [routerLink]="['/']" class="navbar-brand">TaxCalculatorApi</a>
+      <a [routerLink]="['/']" class="navbar-brand">Tax Calculator</a>
       <button
         (click)="toggle()"
         [attr.aria-expanded]="isExpanded"
@@ -15,20 +15,6 @@
       >
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div
-        [ngClass]="{ show: isExpanded }"
-        class="navbar-collapse collapse d-sm-inline-flex justify-content-end"
-      >
-        <ul class="navbar-nav flex-grow">
-          <li
-            [routerLinkActiveOptions]="{ exact: true }"
-            [routerLinkActive]="['link-active']"
-            class="nav-item"
-          >
-            <a [routerLink]="['/']" class="nav-link text-dark">Home</a>
-          </li>
-        </ul>
-      </div>
     </div>
   </nav>
 </header>
