@@ -1,11 +1,12 @@
 <h1 id="tableLabel">Tax Calculator</h1>
 
-<p *ngIf="fetchingData"><em>Loading...</em></p>
 <div>
   <label for="salaryInput" class="me-3">Gross Annual Salary: </label>
   <input id="salaryInput" placeholder="Salary" type="number" [(ngModel)]="salary" class="me-3"/>
-  <button class="btn btn-primary me-3" (click)="calculateTax()" [disabled]="!salary">Calculate</button>
+  <button class="btn btn-primary me-3" (click)="calculateTax()" [disabled]="!salary || fetchingData">Calculate</button>
 </div>
+
+<p *ngIf="fetchingData"><em>Calculating...</em></p>
 
 <div *ngIf="calculationResult">
   <hr/>
