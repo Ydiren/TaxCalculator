@@ -1,8 +1,8 @@
 <h1 id="tableLabel">Tax Calculator</h1>
 
-<p *ngIf="!calculationResult"><em>Loading...</em></p>
+<p *ngIf="!calculationResult && salary"><em>Loading...</em></p>
 <div>
-  <input placeholder="Salary" type="number" [(ngModel)]="salary" /><button (click)="calculateTax()">Calculate</button>
+  <input placeholder="Salary" type="number" [(ngModel)]="salary" class="me-3"/><button class="btn btn-primary me-3" (click)="calculateTax()" [disabled]="!salary">Calculate</button>
 </div>
 
 <table *ngIf="calculationResult" aria-labelledby="tableLabel" class='table table-striped'>
