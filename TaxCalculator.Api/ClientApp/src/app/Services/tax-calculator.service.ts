@@ -1,4 +1,5 @@
-import {Inject, Injectable} from '@angular/core';
+import { environment } from '../../environments/environment';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {CalculateTaxResult} from "../fetch-data/fetch-data.component";
 
@@ -7,11 +8,13 @@ import {CalculateTaxResult} from "../fetch-data/fetch-data.component";
 })
 export class TaxCalculatorService {
 
+  private readonly baseUrl = environment.apiBaseUrl;
+
   private readonly API_ROUTES = {
-    calculateTax: (salary:number) => `TaxCalculator/calculatetax?salary=${salary}`
+    calculateTax: (salary:number) => `/TaxCalculator/calculatetax?salary=${salary}`
   }
 
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) { }
+  constructor(private http: HttpClient) { }
 
   calculateTax(salary: number) {
     let url = `${this.baseUrl}${this.API_ROUTES.calculateTax(salary)}`;
