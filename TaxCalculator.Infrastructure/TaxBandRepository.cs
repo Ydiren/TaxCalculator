@@ -1,12 +1,27 @@
-﻿using TaxCalculator.Application.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using TaxCalculator.Application.Data;
 using TaxCalculator.Domain.Models;
 
 namespace TaxCalculator.Infrastructure;
 
 public class TaxBandRepository : ITaxBandRepository
 {
-    public Task<IEnumerable<TaxBand>> GetAll()
+    private readonly TaxDbContext _taxDbContext;
+
+    public TaxBandRepository(TaxDbContext taxDbContext)
     {
-        throw new NotImplementedException();
+        _taxDbContext = taxDbContext;
+    }
+    
+    public async Task<IEnumerable<TaxBand>> GetAll()
+    {
+        var entities = await _taxDbContext.TaxBands.ToListAsync();
+        return entities.Select(x => new TaxBand
+                       {
+                           LowerLimit = x.LowerLimit,
+                           UpperLimit = x.UpperLimit,
+                           Rate = x.Rate
+                       })
+                       .ToList();
     }
 }

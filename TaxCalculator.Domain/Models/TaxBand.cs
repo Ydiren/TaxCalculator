@@ -3,10 +3,11 @@ namespace TaxCalculator.Domain.Models;
 public class TaxBand
 {
     private const int NoLimit = -1;
+    
     public int LowerLimit { get; set; }
     public int UpperLimit { get; set; }
     public int Rate { get; set; }
-
+    
     public decimal CalculateTax(int salary)
     {
         var taxableAmount = FindTaxableAmount(salary);
