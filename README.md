@@ -6,6 +6,10 @@ A simple service that calculates the monthly and annual tax for the given salary
 To start the service, just open a terminal and run the appropriate script<br/>
 Powershell - `./run.ps1`<br/>
 MacOS zsh - `chmod +x ./run.sh | ./run.sh`<br/>
+The script assumes that a few prerequisites are in place
+- Docker is installed
+- dotnet-ef tool is installed globally
+- NodeJS v >=14.0 is installed
 
 ### Script Details
 The script performs a number of tasks
