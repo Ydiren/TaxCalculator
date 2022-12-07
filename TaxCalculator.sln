@@ -16,6 +16,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Folder", "Solution Folder", "{64A425AC-4B2B-41DC-B9E8-1ECE3F16823B}"
 	ProjectSection(SolutionItems) = preProject
 		run.sh = run.sh
+		run.ps1 = run.ps1
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaxCalculator.Application.Tests", "TaxCalculator.Application.Tests\TaxCalculator.Application.Tests.csproj", "{6FD11543-1997-4128-A4B3-F552242473EC}"

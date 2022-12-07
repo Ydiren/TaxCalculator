@@ -16,7 +16,14 @@ if  docker ps | grep -q tax-calculator-db;
   else
     echo "Pulling MySQL docker image"
     docker run --name tax-calculator-db --rm -p 3306:3306 -e MYSQL_RANDOM_ROOT_PASSWORD=true -e MYSQL_DATABASE=tax-calculation -e MYSQL_USER=testuser -e MYSQL_PASSWORD=test1234 -d mysql:latest
+
+    echo "Waiting for database to start"
+    while docker logs tax-calculator-db | grep -c "MySQL init process done" && $? != 0
+    do
+      sleep 1
+    done
 fi
+
 
 dotnet ef database update -p ./TaxCalculator.Infrastructure/TaxCalculator.Infrastructure.csproj -s ./TaxCalculator.Api/TaxCalculator.Api.csproj 
 
