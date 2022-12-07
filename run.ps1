@@ -11,6 +11,9 @@ function IsMySQLInitialised(){
     return $result;
 }
 
+Write-Host "Prompting user to trust development ASP.NET SSL certificate"
+dotnet dev-certs https --trust
+
 dotnet publish -c release --no-self-contained ./TaxCalculator.sln
 
 if (IsMySqlDockerContainerAlreadyRunning) {
@@ -53,7 +56,7 @@ Start-ThreadJob -ScriptBlock {
         Start-Sleep -Milliseconds 100
     }
 
-    open "https://localhost:5001"
+    Start-Process "https://localhost:5001"
 };
 
 dotnet ./TaxCalculator.Api.dll
